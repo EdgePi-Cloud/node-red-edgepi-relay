@@ -1,19 +1,19 @@
 {
-    "name": "@edgepi-cloud/node-red-edgepi-digital-out",
+    "name": "@edgepi-cloud/node-red-edgepi-relay",
     "node-red": {
         "nodes": {
-            "edgepi-digital-out": "edgepi-digital-out.js"
+            "edgepi-relay": "edgepi-relay.js"
         }
     },
     "version": "1.0.0",
-    "description": "node-red node for edgepi digital output module utilizing remote procedure calls",
+    "description": "node-red node for edgepi relay module utilizing remote procedure calls",
     "main": "index.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/EdgePi-Cloud/node-red-edgepi-digital-out.git"
+        "url": "git+https://github.com/EdgePi-Cloud/node-red-edgepi-relay.git"
     },
     "keywords": [
         "node-red",
@@ -23,9 +23,9 @@
     "author": "Isaac James",
     "license": "MIT",
     "bugs": {
-        "url": "https://github.com/EdgePi-Cloud/node-red-edgepi-digital-out/issues"
+        "url": "https://github.com/EdgePi-Cloud/node-red-edgepi-relay/issues"
     },
-    "homepage": "https://github.com/EdgePi-Cloud/node-red-edgepi-digital-out#readme",
+    "homepage": "https://github.com/EdgePi-Cloud/node-red-edgepi-relay#readme",
     "dependencies": {
         "@edgepi-cloud/edgepi-rpc": "^1.0.5"
     },
