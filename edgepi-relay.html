@@ -11,7 +11,7 @@
 		},
 		inputs:1,
 		outputs:1,
-	  icon: "./icons/switch.svg",
+	  icon: "switch.svg",
 		label: function() {
 			return this.name||"relay-node";
     },
@@ -19,57 +19,76 @@
       // Query html elements
       const configTransportSelect = document.getElementById("node-input-transport");
       const tcpField = document.querySelector(".form-row.tcp")
-      const energizeRelay = document.getElementById("node-red-input-energizeRelay");
+      const energizeRelay = document.getElementById("node-input-energizeRelay");
       const energizeState = document.getElementById("energizeStateText")
 
       function updateEditor(){
 				tcpField.style.display = (configTransportSelect.value === "Network") ? "flex" : "none"
-        energizeState.textContent = energizeRelay.value ? "Close Relay" : "Open Relay"
+        energizeState.textContent = (energizeRelay.checked) ? "Open Relay" : "Close Relay"
       }
 
       // Update and add event listener to update on user input
       updateEditor()
       configTransportSelect.addEventListener("change", updateEditor);
+      energizeRelay.addEventListener("change", updateEditor)
   }
 	});
 </script>
 <script type="text/html" data-template-name="edgepi-relay-node">
 
-  <style>
-    *{
-        box-sizing: border-box !important;
-    }
+    <style>
+      *{
+          box-sizing: border-box !important;
+      }
 
-    .form-row{
-        display: flex;
-        align-items: center;
-    }
+      .form-row{
+          display: flex;
+          align-items: center;
+      }
 
-    .form-row>label{
-        margin-top: auto; margin-bottom: auto;
-    }
+      .form-row>label{
+          margin-top: auto; margin-bottom: auto;
+      }
 
-    .form-row.tcp {
-        flex-direction: row;
-        align-items: center;
-        margin-top: -5px; margin-bottom: 10px;
-    }
+      .form-row.tcp {
+          flex-direction: row;
+          align-items: center;
+          margin-top: -5px; margin-bottom: 10px;
+      }
 
-    .tcp-address-input{
-        width: 110px !important;
-        margin-left: 100px !important;
-    }
-    .tcp-port-input{
-        width: 60px !important;
-    }
+      .tcp-address-input{
+          width: 110px !important;
+          margin-left: 100px !important;
+      }
+      .tcp-port-input{
+          width: 60px !important;
+      }
 
-    .tcp-port-label{
-        width: 5px !important;
-        margin: auto 5px;
-    }
-</style>
+      .tcp-port-label{
+          width: 5px !important;
+          margin: auto 5px;
+      }
 
-	<div class="form-row">
+      .form-row.energizeRelay{
+        justify-content: flex-start;
+      }
+      .form-row.energizeRelay>:nth-child(n){
+        width: fit-content;
+        margin-top:auto; margin-bottom: auto;
+      }
+
+      .form-row.energizeRelay>input{
+        margin-left: 5px;
+      }
+
+      .form-row.energizeRelay>p{
+        color: #858484;
+        margin-left: 5px;
+      }
+
+  </style>
+
+	<div class="form-row name">
 		<label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
 		<input type="text" id="node-input-name" placeholder="Name">
 	</div>	
@@ -85,12 +104,10 @@
     <label class="tcp-port-label" for="node-input-tcpPort">:</label>
     <input class="tcp-port-input" type="text" id="node-input-tcpPort" placeholder="Port">
   </div>
-  <div class="form-row energize">
-    <span>
+  <div class="form-row energizeRelay">
     <label for="node-input-energizeRelay">Energize:</label>
     <input type="checkbox" name="radios" id="node-input-energizeRelay">
     <p id="energizeStateText"></p>
-  </span>
   </div>
 </script>
 
