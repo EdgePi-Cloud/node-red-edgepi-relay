@@ -17,7 +17,7 @@ module.exports = function (RED) {
   
       if (relay){
         console.info("Relay node initialized on:", transport);
-        node.status({fill:"green", shape:"ring", text:"d-out initialized"});
+        node.status({fill:"green", shape:"ring", text:"relay initialized"});
       }
   
       // Input event listener
