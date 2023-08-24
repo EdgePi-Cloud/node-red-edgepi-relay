@@ -24,6 +24,3 @@ Any message can be used to trigger this node.
 ### Outputs
 - **payload** *string*<br>
 A success message stating the relay status.
-
-### References
-- [GitHub](https://github.com/edgepi-cloud/node-red-edgepi-relay) - The node's GitHub repository
