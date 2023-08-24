@@ -113,5 +113,25 @@
 
 
 <script type="text/html" data-help-name="edgepi-relay-node">
-	<p>Node for EdgePi Relay</p>
+	<p>EdgePi relay node that opens or closes relay.</p>
+	<h3>Properties</h3>
+	<dl class="message-properties">
+		<dt> RPC Server</dt>
+		<dd>The connection to your EdgePi's RPC Server. </dd>
+    <dt>Energize</dt>
+    <dd>Whether to open or close the relay on input.</dd>
+	</dl>
+	<h3>Inputs</h3>
+		<dl class="message-properties">
+			Any message can be used to trigger this node.
+		</dl>
+	<h3>Outputs</h3>
+		<dl class="message-properties">
+			<dt>payload <span class="property-type">string</span></dt>
+			<dd>A success message stating the relay status.</dd>
+		</dl>
+	<h3>References</h3>
+		<ul>
+			<li><a href="https://github.com/edgepi-cloud/node-red-edgepi-relay">GitHub</a> -the node's github repository </li>
+		</ul>
 </script>
