@@ -10,8 +10,6 @@ module.exports = function (RED) {
       const transport = (config.transport === "Network") ? tcp_transport : ipc_transport;
       const energize = (config.energizeRelay) ? "closeRelay" : "openRelay"
   
-
-    
       // init new relay instance
       const relay = new rpc.RelayService(transport)
   
@@ -39,10 +37,6 @@ module.exports = function (RED) {
         }
       });
   
-      node.on('close', (done) => {
-        node.status({ fill: 'grey', shape: 'ring', text: 'relay node terminated' });
-        done();
-      });
     }
     
     RED.nodes.registerType('edgepi-relay-node', RelayNode);
