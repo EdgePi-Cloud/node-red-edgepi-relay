@@ -8,7 +8,7 @@ module.exports = function (RED) {
       const ipc_transport = "ipc:///tmp/edgepi.pipe"
       const tcp_transport = `tcp://${config.tcpAddress}:${config.tcpPort}`
       const transport = (config.transport === "Network") ? tcp_transport : ipc_transport;
-      const energize = (config.energizeRelay) ? "closeRelay" : "openRelay"
+      const relayState = (config.relayState)
   
       // init new relay instance
       const relay = new rpc.RelayService(transport)
@@ -22,7 +22,7 @@ module.exports = function (RED) {
       node.on('input', async function(msg,send,done){
         node.status({fill:"green", shape:"dot", text:"input recieved"});
         try{
-          const response = await relay[energize]();
+          const response = await relay[relayState]();
           msg.payload = response;
         }
         catch(error){
@@ -39,6 +39,6 @@ module.exports = function (RED) {
   
     }
     
-    RED.nodes.registerType('edgepi-relay-node', RelayNode);
+    RED.nodes.registerType('relay', RelayNode);
     
   };
