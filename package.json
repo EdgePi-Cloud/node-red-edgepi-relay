@@ -5,7 +5,7 @@
             "edgepi-relay": "edgepi-relay.js"
         }
     },
-    "version": "1.0.2",
+    "version": "1.0.3",
     "description": "node-red node for edgepi relay module utilizing remote procedure calls",
     "main": "index.js",
     "scripts": {
