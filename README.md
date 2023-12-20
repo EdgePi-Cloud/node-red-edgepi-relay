@@ -15,16 +15,20 @@ npm install @edgepi-cloud/node-red-edgepi-relay
 - **RPC Server**<br>
 The connection to your EdgePi's RPC Server.
 
-- **Energize**<br>
-Whether to open or close the relay on input.
+- **State**<br>
+Whether to open or close the relay.
 
 ### Inputs
-Any message can be used to trigger this node.
+- **payload** *string*<br>
+The relay state.
+
+Example input configuration:
+```
+msg {
+    "payload": "open"
+}
+```
 
 ### Outputs
 - **payload** *string*<br>
 A success message stating the relay status.
-
-
-**NOTE:** Currently, EdgePi nodes are only available on x86 systems.
-

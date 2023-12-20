@@ -4,7 +4,6 @@ module.exports = function (RED) {
   function RelayNode(config) {
     RED.nodes.createNode(this, config);
     const node = this;
-    const relayState = config.relayState;
 
     setInitialConfigs(config).then((relay) => {
       node.on("input", async function (msg, send, done) {
@@ -13,8 +12,8 @@ module.exports = function (RED) {
           const input = msg.payload === "open" ? "openRelay" : "closeRelay";
           msg.payload = await relay[input]();
         } catch (error) {
-          msg.payload = error;
           console.error(error);
+          msg.payload = error;
         }
         send(msg);
         if (done) {
@@ -38,7 +37,8 @@ module.exports = function (RED) {
           text: "relay initialized",
         });
 
-        await relay[relayState]();
+        await relay[config.relayState]();
+        return relay;
       } catch (error) {
         console.error(error);
         node.status({

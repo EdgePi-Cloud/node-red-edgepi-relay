@@ -35,8 +35,6 @@
         tcpField.style.display =
           configTransportSelect.value === "Network" ? "flex" : "none";
       }
-
-      // Update and add event listener to update on user input
       updateEditor();
       configTransportSelect.addEventListener("change", updateEditor);
       relayOpen.addEventListener("change", updateEditor);
@@ -49,6 +47,7 @@
     },
   });
 </script>
+
 <script type="text/html" data-template-name="relay">
   <style>
     * {
@@ -144,23 +143,25 @@
 
 <script type="text/html" data-help-name="relay">
   <p>
-    Opens or closes the EdgePi relay. On the EdgePi, connect an input or supply voltage
-    to the COM (Common) port and connect the NO (Normally Open) port to the
-    device you want to control.
+    Opens or closes the EdgePi relay. On the EdgePi, connect an input or supply
+    voltage to the COM (Common) port and connect the NO (Normally Open) port to
+    the device you want to control.
   </p>
   <h3>Properties</h3>
   <dl class="message-properties">
     <dt>RPC Server</dt>
     <dd>The connection to your EdgePi's RPC Server.</dd>
     <dt>State</dt>
-    <dd>
-      Configures input to trigger the relay to be in either an 'Open' or
-      'Closed' state.
-    </dd>
+    <dd>Configures the relay to be open or closed.</dd>
   </dl>
   <h3>Inputs</h3>
+  <dd>
+    Initial configurations set in the editor are applied once the node is
+    deployed, after which configurations can be dynamically changed from input.
+  </dd>
   <dl class="message-properties">
-    Any message can be used to trigger this node.
+    <dt>payload <span class="property-type">string</span></dt>
+    <dd>The relay state.</dd>
   </dl>
   <h3>Outputs</h3>
   <dl class="message-properties">
