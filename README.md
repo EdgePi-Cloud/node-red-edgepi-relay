@@ -19,16 +19,23 @@ The connection to your EdgePi's RPC Server.
 Whether to open or close the relay.
 
 ### Inputs
-- **payload** *string*<br>
+- **payload** *boolean*<br>
 The relay state.
 
 Example input configuration:
 ```
 msg {
-    "payload": "open"
+    "payload": false
 }
 ```
 
 ### Outputs
 - **payload** *string*<br>
 A success message stating the relay status.
+
+Example output:
+```
+msg {
+    payload: "Successfully opened relay"
+}
+```

@@ -7,7 +7,7 @@
       transport: { value: "Local" },
       tcpAddress: { value: "" },
       tcpPort: { value: "" },
-      relayState: { value: "closeRelay" },
+      relayState: { value: true },
     },
     inputs: 1,
     outputs: 1,
@@ -16,7 +16,6 @@
       return this.name || "relay";
     },
     oneditprepare: function () {
-      // Query html elements
       const configTransportSelect = document.getElementById(
         "node-input-transport"
       );
@@ -25,7 +24,7 @@
       const relayOpen = document.getElementById("node-input-openRelay");
       const relayClose = document.getElementById("node-input-closeRelay");
 
-      if (this.relayState == "closeRelay") {
+      if (this.relayState == true) {
         relayClose.checked = true;
       } else {
         relayOpen.checked = true;
@@ -42,8 +41,8 @@
     },
     oneditsave: function () {
       this.relayState = document.getElementById("node-input-closeRelay").checked
-        ? "closeRelay"
-        : "openRelay";
+        ? true
+        : false;
     },
   });
 </script>
@@ -157,11 +156,11 @@
   <h3>Inputs</h3>
   <dd>
     Initial configurations set in the editor are applied once the node is
-    deployed, after which configurations can be dynamically changed from input.
+    deployed. Configurations can then be dynamically set from input.
   </dd>
   <dl class="message-properties">
     <dt>payload <span class="property-type">string</span></dt>
-    <dd>The relay state.</dd>
+    <dd>The relay state. 'true' for closed, 'false' for open.</dd>
   </dl>
   <h3>Outputs</h3>
   <dl class="message-properties">
