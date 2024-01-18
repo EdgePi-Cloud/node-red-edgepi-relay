@@ -9,10 +9,11 @@ module.exports = function (RED) {
     initializeNode(config).then((relay) => {
       node.on("input", async function (msg, send, done) {
         node.status({ fill: "green", shape: "dot", text: "input recieved" });
+
         try {
-          relayState = msg.payload ?? relayState;
+          relayState = msg.payload || relayState;
           const stateStr = relayState === true ? "closeRelay" : "openRelay";
-          msg = {payload: await relay[stateStr]()};
+          msg = { payload: await relay[stateStr]() };
         } catch (error) {
           console.error(error);
           msg.payload = error;
