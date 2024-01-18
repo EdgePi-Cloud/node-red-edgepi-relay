@@ -11,7 +11,10 @@ module.exports = function (RED) {
         node.status({ fill: "green", shape: "dot", text: "input recieved" });
 
         try {
-          relayState = msg.payload || relayState;
+          relayState =
+            msg.payload && typeof msg.payload === "boolean"
+              ? msg.payload
+              : relayState;
           const stateStr = relayState === true ? "closeRelay" : "openRelay";
           msg = { payload: await relay[stateStr]() };
         } catch (error) {
