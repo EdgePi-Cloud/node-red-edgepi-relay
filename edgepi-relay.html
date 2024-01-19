@@ -16,26 +16,23 @@
       return this.name || "relay";
     },
     oneditprepare: function () {
-      const configTransportSelect = document.getElementById(
-        "node-input-transport"
-      );
-      const tcpField = document.querySelector(".form-row.tcp");
-      const relayState = document.getElementById("node-input-relayState");
+      const transportType = document.getElementById("node-input-transport");
+      const tcpTransportInputs = document.querySelector(".form-row.tcp");
       const relayOpen = document.getElementById("node-input-openRelay");
       const relayClose = document.getElementById("node-input-closeRelay");
 
-      if (this.relayState == true) {
+      if (this.relayState === true) {
         relayClose.checked = true;
       } else {
         relayOpen.checked = true;
       }
 
       function updateEditor() {
-        tcpField.style.display =
-          configTransportSelect.value === "Network" ? "flex" : "none";
+        tcpTransportInputs.style.display =
+          transportType.value === "Network" ? "flex" : "none";
       }
       updateEditor();
-      configTransportSelect.addEventListener("change", updateEditor);
+      transportType.addEventListener("change", updateEditor);
       relayOpen.addEventListener("change", updateEditor);
       relayClose.addEventListener("change", updateEditor);
     },
