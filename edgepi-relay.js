@@ -4,14 +4,16 @@ module.exports = function (RED) {
   function RelayNode(config) {
     RED.nodes.createNode(this, config);
     const node = this;
-    let relayState = config.relayState;
+    let { relayState } = config;
 
     initializeNode(config).then((relay) => {
       node.on("input", async function (msg, send, done) {
-        node.status({ fill: "green", shape: "dot", text: "input recieved" });
+        node.status({ fill: "green", shape: "dot", text: "input received" });
 
         try {
-          relayState = msg.payload || relayState;
+          if (typeof msg.payload === "boolean") {
+            relayState = msg.payload;
+          }
           const stateStr = relayState === true ? "closeRelay" : "openRelay";
           msg = { payload: await relay[stateStr]() };
         } catch (error) {
