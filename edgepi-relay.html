@@ -16,26 +16,23 @@
       return this.name || "relay";
     },
     oneditprepare: function () {
-      const configTransportSelect = document.getElementById(
-        "node-input-transport"
-      );
-      const tcpField = document.querySelector(".form-row.tcp");
-      const relayState = document.getElementById("node-input-relayState");
+      const transportType = document.getElementById("node-input-transport");
+      const tcpTransportInputs = document.querySelector(".form-row.tcp");
       const relayOpen = document.getElementById("node-input-openRelay");
       const relayClose = document.getElementById("node-input-closeRelay");
 
-      if (this.relayState == true) {
+      if (this.relayState === true) {
         relayClose.checked = true;
       } else {
         relayOpen.checked = true;
       }
 
       function updateEditor() {
-        tcpField.style.display =
-          configTransportSelect.value === "Network" ? "flex" : "none";
+        tcpTransportInputs.style.display =
+          transportType.value === "Network" ? "flex" : "none";
       }
       updateEditor();
-      configTransportSelect.addEventListener("change", updateEditor);
+      transportType.addEventListener("change", updateEditor);
       relayOpen.addEventListener("change", updateEditor);
       relayClose.addEventListener("change", updateEditor);
     },
@@ -149,7 +146,11 @@
   <h3>Properties</h3>
   <dl class="message-properties">
     <dt>RPC Server</dt>
-    <dd>The connection to your EdgePi's RPC Server.</dd>
+    <dd>
+      The connection to your EdgePi's RPC Server. Use <strong>Local</strong> if
+      node-red is running on EdgePi. Otherwise use the
+      <strong>Network</strong> option and enter EdgePi's IP address / Hostname.
+    </dd>
     <dt>State</dt>
     <dd>Configures the relay to be open or closed.</dd>
   </dl>
