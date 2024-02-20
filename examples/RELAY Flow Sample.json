@@ -1,0 +1,55 @@
+[
+    {
+        "id": "0dbe2de06946d2a7",
+        "type": "relay",
+        "z": "aa7eb918109cfafe",
+        "name": "",
+        "transport": "Local",
+        "tcpAddress": "",
+        "tcpPort": "5555",
+        "relayState": true,
+        "x": 350,
+        "y": 560,
+        "wires": [
+            [
+                "3e58fe91a7b964c1"
+            ]
+        ]
+    },
+    {
+        "id": "6ddd5287e16009dc",
+        "type": "inject",
+        "z": "aa7eb918109cfafe",
+        "name": "",
+        "props": [],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 90,
+        "y": 600,
+        "wires": [
+            [
+                "0dbe2de06946d2a7"
+            ]
+        ]
+    },
+    {
+        "id": "3e58fe91a7b964c1",
+        "type": "debug",
+        "z": "aa7eb918109cfafe",
+        "name": "debug RELAY output",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 740,
+        "y": 560,
+        "wires": []
+    }
+]
